@@ -1,0 +1,39 @@
+.top {
+    margin-top:20px;
+}
+
+.glass {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+.contact-modal {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+}
+
+@media screen and (max-width: 479px) {
+  .contact-modal {
+      width: 90%;
+  }
+}
+
+.modal-table {
+  table-layout:fixed;
+  border: 1px solid lightslategray;
+}
+
+.modal-col {
+  overflow-x:auto;
+}

@@ -1,0 +1,49 @@
+
+<div class="row"><button class="btn-primary btn-lg" (click)="openModal()">Create Contact</button></div>
+<ng-container *ngIf="allContacts.length > 0">
+  <div class="row" style="margin-top: 10px;">
+      <table class="table table-striped modal-table">
+          <thead>
+            <tr>
+              <th scope="col" style="width:20%">First Name</th>
+              <th scope="col" style="width:20%">Last Name</th>
+              <th scope="col" style="width:10%">Age</th>
+              <th scope="col" style="width:10%">Gender</th>
+              <th scope="col" style="width:20%">Email</th>
+              <th scope="col" style="width:20%">Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of allContacts">
+                <tr>
+                    <td class="modal-col">{{item.firstName}}</td>
+                    <td class="modal-col">{{item.lastName}}</td>
+                    <td class="modal-col">{{item.age}}</td>
+                    <td class="modal-col">{{item.gender}}</td>
+                    <td class="modal-col">{{item.email}}</td>
+                    <td class="modal-col">{{item.comments}}</td>
+                  </tr>
+            </ng-container>
+          </tbody>
+        </table>
+  </div>
+</ng-container>
+<div id="modal" class="glass">
+  <div class="contact-modal">
+    <form (submit)=onSubmit() ngNativeValidate>
+      <legend>Contact Details</legend>
+        <div class="form-group"><label>First Name:</label><input maxlength="100" required [(ngModel)]="contact.firstName" [ngModelOptions]="{standalone: true}" type="text" class="form-control"/></div>
+        <div class="form-group"><label>Last Name:</label><input maxlength="100" required [(ngModel)]="contact.lastName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" /></div>
+        <div class="form-group"><label>Age:</label><input max="999" required [(ngModel)]="contact.age" [ngModelOptions]="{standalone: true}" type="number" class="form-control"/></div>
+        <div class="form-group"><label>Gender:</label><select required class="form-control" [(ngModel)]="contact.gender" [ngModelOptions]="{standalone: true}"><option value="male">Male</option><option value="female">Female</option></select></div>
+        <div class="form-group"><label>Email:</label><input maxlength="120" required [(ngModel)]="contact.email" [ngModelOptions]="{standalone: true}" type="text" class="form-control"/></div>
+        <div class="form-group"><label>Comments:</label><textarea  maxlength="500" [(ngModel)]="contact.comments" [ngModelOptions]="{standalone: true}" class="form-control"></textarea></div>
+        <div class="form-group"><div role="group" class="btn-group"><button class="btn btn-success" type="submit">Submit</button><button (click)=hideModal() class="btn btn-danger" type="button">Close</button></div></div>
+        <ng-container *ngIf="errorMessage">
+            <div class="form-group">
+              <div role="alert" class="alert alert-danger"><span>{{errorMessage}}</span></div>
+            </div>
+        </ng-container>
+      </form>
+  </div>
+</div>
