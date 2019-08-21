@@ -5,4 +5,5 @@ export class Contact {
     gender: string;
     email: string;
     comments: string;
+    date: string;
   }

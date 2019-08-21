@@ -53,9 +53,17 @@ export class AppComponent implements AfterViewInit {
   }
 
   submitSuccess(result) {
-    result = JSON.parse(result.object);
-    this.allContacts.push(result);
+    let contact: Contact = JSON.parse(result.object);
+    contact.date = this.formatDate(new Date());
+    this.allContacts.push(contact);
     this.hideModal();
+  }
+
+  formatDate(date) {
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();   
+    return mm + '/' + dd + '/' + yyyy;
   }
 
 }

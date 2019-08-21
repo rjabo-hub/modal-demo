@@ -29,6 +29,11 @@
   }
 }
 
+.submit-button {
+  color: white;
+  background-color: #006400 !important;
+}
+
 .modal-table {
   table-layout:fixed;
   border: 1px solid lightslategray;
